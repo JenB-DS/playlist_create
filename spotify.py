@@ -23,4 +23,6 @@ type = setup.set_type()
 # create playlist
 playlist = create.create_playlist(music_speeds, time, type)
 
-print(playlist)
+pl_done = playlist[["track_name", "track_artist", "tempo"]]
+
+print(pl_done.head(10))

@@ -1,4 +1,5 @@
 import random
+import pandas as pd
 
 def create_playlist(music_speeds, time, type):
     pass 
@@ -28,12 +29,11 @@ def create_playlist(music_speeds, time, type):
         # Replace duplicate with a new random number
         n = random.randint(0, len(run) - 1)
 
+    playlist_df = pd.DataFrame(columns=walk.columns)  # Create a DataFrame with the same columns as 'walk'
 
+    for i in range(5):
+        # Alternate between walk and run, adding entire rows to the playlist_df
+        playlist_df = playlist_df.append(walk.iloc[walk_nums[i]], ignore_index=True)
+        playlist_df = playlist_df.append(run.iloc[run_nums[i]], ignore_index=True)
 
-    playlist = [walk[walk_nums[0]], run[run_nums[0]],
-                walk[walk_nums[1]], run[run_nums[1]],
-                walk[walk_nums[2]], run[run_nums[2]],
-                walk[walk_nums[3]], run[run_nums[3]],
-                walk[walk_nums[4]], run[run_nums[4]]]
-
-    return playlist
+    return playlist_df
