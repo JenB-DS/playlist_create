@@ -2,7 +2,8 @@ import pandas as pd
 import setup_functions as setup
 import create_playlist as create
 
-music = pd.read_csv("spotify_songs.csv")
+url = "https://raw.githubusercontent.com/JenB-DS/playlist_create/main/spotify_songs.csv"
+music = pd.read_csv(url)
 
 # how many songs inc. in the example (approx 3 mins)
 cond = (music['duration_ms'] >= 160000) & (music['duration_ms'] <= 200000)
@@ -20,4 +21,6 @@ time = setup.set_time()
 type = setup.set_type()
 
 # create playlist
-# playlist = create.create_playlist(music_speeds, time, type)
+playlist = create.create_playlist(music_speeds, time, type)
+
+print(playlist)
